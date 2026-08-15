@@ -1,0 +1,21 @@
+services:
+  dozzle:
+    image: ghcr.io/amir20/dozzle:v10.7.1
+    container_name: dozzle
+    hostname: ${HOSTNAME}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - data:/data
+    ports:
+      - 9001:8080
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/dozzle", "healthcheck"]
+      interval: 3s
+      timeout: 30s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  dozzle_data:
+    name: ${COMPOSE_PROJECT_NAME}_${VOLUME_NAME}

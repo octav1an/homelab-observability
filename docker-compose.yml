@@ -5,7 +5,7 @@ services:
     hostname: ${HOSTNAME}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - data:/data
+      - dozzle_data:/data
     ports:
       - 9001:8080
     restart: unless-stopped

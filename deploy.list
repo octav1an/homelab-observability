@@ -1,0 +1,4 @@
+deploy.list
+docker-compose.yml
+.env
+scripts/server/
